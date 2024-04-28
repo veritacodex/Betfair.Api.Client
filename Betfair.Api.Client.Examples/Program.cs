@@ -1,5 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Betfair.Api.Client.Model.Request;
 
 namespace Betfair.Api.Client.Examples
 {
@@ -8,9 +8,7 @@ namespace Betfair.Api.Client.Examples
         static async Task Main()
         {
             var client = new BetfairApiClient("pathToCertFolder");
-            var account = await client.GetAccount();
-            Console.WriteLine("Account:");
-            Console.WriteLine($"\tAvailableToBet:{account.AvailableToBetBalance}");
+            var events = await client.GetEvents(EventTypeIds.FootballEventId, 1);
         }
     }
 }
