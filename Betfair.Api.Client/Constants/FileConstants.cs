@@ -1,6 +1,6 @@
 ﻿namespace Betfair.Api.Client;
 
-public class FileConstants
+public static class FileConstants
 {
     public const string CERT_FOLDER = "./BetfairCert/";
     public const string SESSION_TOKEN_FILE = "sessionToken.json";

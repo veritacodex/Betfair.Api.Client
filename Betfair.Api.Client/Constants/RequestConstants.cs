@@ -1,6 +1,6 @@
 namespace Betfair.Api.Client;
 
-public class RequestConstants
+public static class RequestConstants
 {
     public const string BETTING_API = "https://api.betfair.com/exchange/betting/rest/v1.0/";
     public const string ACCOUNTS_API = "https://api.betfair.com/exchange/account/rest/v1.0/";

@@ -1,6 +1,6 @@
 namespace Betfair.Api.Client;
 
-public class HeaderConstants
+public static class HeaderConstants
 {
     public const string ACCEPT_TYPE = "application/json";
     public const string HEADER_APPLICATION_KEY = "X-Application";

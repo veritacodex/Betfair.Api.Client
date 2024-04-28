@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace Betfair.Api.Client;
 
-public class FileHelper
+public static class FileHelper
 {
     public static Auth GetAuthorization()
     {
@@ -15,7 +15,7 @@ public class FileHelper
     public static AuthConfig GetAuthorizationConfig()
     {
         var configs = JsonConvert.DeserializeObject<List<AuthConfig>>(File.ReadAllText(FileConstants.CERT_FOLDER + FileConstants.CONFIG_FILE));
-        return configs.FirstOrDefault(x => x.Version == HeaderConstants.APPLICATION_KEY_VERSION);
+        return configs.Find(x => x.Version == HeaderConstants.APPLICATION_KEY_VERSION);
     }
 
     public static Login GetLoginResponse()

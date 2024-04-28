@@ -8,7 +8,7 @@ using Betfair.Api.Client.Model.Request;
 
 namespace Betfair.Api.Client;
 
-public class BetfairApiClient
+public static class BetfairApiClient
 {
     public static async Task<Account> GetAccount()
     {
