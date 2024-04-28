@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Betfair.Api.Client.Examples
 {
-    class Program
+    static class Program
     {
         static async Task Main()
         {

@@ -10,7 +10,7 @@ namespace Betfair.Api.Client;
 
 public class BetfairApiClient(string certFolder)
 {
-    private HttpClientHelper _httpClientHelper = new(certFolder);
+    private readonly HttpClientHelper _httpClientHelper = new(certFolder);
 
     public async Task<Account> GetAccount()
     {

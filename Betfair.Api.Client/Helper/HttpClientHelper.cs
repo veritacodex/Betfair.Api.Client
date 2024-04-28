@@ -8,14 +8,9 @@ using Newtonsoft.Json;
 
 namespace Betfair.Api.Client;
 
-public class HttpClientHelper
+public class HttpClientHelper(string certFolder)
 {
-    private string _certFolder;
-
-    public HttpClientHelper(string certFolder)
-    {
-        _certFolder = certFolder;
-    }
+    private readonly string _certFolder = certFolder;
 
     private HttpClient GetHttpClient(string baseUri)
     {
