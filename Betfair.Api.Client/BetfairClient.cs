@@ -77,7 +77,7 @@ public class BetfairApiClient(string certFolder)
         };
         var jsonResponse = await _httpClientHelper.GetResponse(RequestConstants.BETTING_API, "listEvents/", parameters);
         var events = JsonConvert.DeserializeObject<List<EventResult>>(jsonResponse);
-        return events.OrderBy(x => x.Event.OpenDate).ToList();
+        return [.. events.OrderBy(x => x.Event.OpenDate)];
     }
 
     public async Task<List<EventResult>> GetEvents(string eventTypeId, int numberDaysFuture)
