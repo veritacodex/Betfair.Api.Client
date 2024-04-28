@@ -8,17 +8,19 @@ using Betfair.Api.Client.Model.Request;
 
 namespace Betfair.Api.Client;
 
-public static class BetfairApiClient
+public class BetfairApiClient(string certFolder)
 {
-    public static async Task<Account> GetAccount()
+    private HttpClientHelper _httpClientHelper = new(certFolder);
+
+    public async Task<Account> GetAccount()
     {
-        var jsonResponse = await HttpClientHelper.GetResponse(RequestConstants.ACCOUNTS_API, "getAccountFunds/", null);
+        var jsonResponse = await _httpClientHelper.GetResponse(RequestConstants.ACCOUNTS_API, "getAccountFunds/", null);
         var account = JsonConvert.DeserializeObject<Account>(jsonResponse);
         account.RequestedOn = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
         return account;
     }
 
-    public static async Task<List<MarketCatalogue>> GetMarketCatalogue(string eventId)
+    public async Task<List<MarketCatalogue>> GetMarketCatalogue(string eventId)
     {
         var parameters = new Dictionary<string, object>
         {
@@ -33,11 +35,11 @@ public static class BetfairApiClient
             [RequestConstants.MAX_RESULTS] = "100",
             [RequestConstants.LOCALE] = null
         };
-        var jsonResponse = await HttpClientHelper.GetResponse(RequestConstants.BETTING_API, "listMarketCatalogue/", parameters);
+        var jsonResponse = await _httpClientHelper.GetResponse(RequestConstants.BETTING_API, "listMarketCatalogue/", parameters);
         return JsonConvert.DeserializeObject<List<MarketCatalogue>>(jsonResponse);
     }
 
-    public static async Task<CurrentOrderSummaryReport> GetOrdersReport()
+    public async Task<CurrentOrderSummaryReport> GetOrdersReport()
     {
         var parameters = new Dictionary<string, object>
         {
@@ -51,34 +53,34 @@ public static class BetfairApiClient
             [RequestConstants.RECORD_COUNT] = null
         };
 
-        var jsonResponse = await HttpClientHelper.GetResponse(RequestConstants.BETTING_API, "listCurrentOrders/", parameters);
+        var jsonResponse = await _httpClientHelper.GetResponse(RequestConstants.BETTING_API, "listCurrentOrders/", parameters);
         return JsonConvert.DeserializeObject<CurrentOrderSummaryReport>(jsonResponse);
     }
 
-    public static async Task<List<EventTypeResult>> GetEventTypes()
+    public async Task<List<EventTypeResult>> GetEventTypes()
     {
         var parameters = new Dictionary<string, object>
         {
             [RequestConstants.FILTER] = new MarketFilter(),
             [RequestConstants.LOCALE] = null
         };
-        var jsonResponse = await HttpClientHelper.GetResponse(RequestConstants.BETTING_API, "listEventTypes/", parameters);
+        var jsonResponse = await _httpClientHelper.GetResponse(RequestConstants.BETTING_API, "listEventTypes/", parameters);
         return JsonConvert.DeserializeObject<List<EventTypeResult>>(jsonResponse);
     }
 
-    public static async Task<List<EventResult>> GetEvents(MarketFilter marketFilter)
+    public async Task<List<EventResult>> GetEvents(MarketFilter marketFilter)
     {
         var parameters = new Dictionary<string, object>
         {
             [RequestConstants.FILTER] = marketFilter,
             [RequestConstants.LOCALE] = null
         };
-        var jsonResponse = await HttpClientHelper.GetResponse(RequestConstants.BETTING_API, "listEvents/", parameters);
+        var jsonResponse = await _httpClientHelper.GetResponse(RequestConstants.BETTING_API, "listEvents/", parameters);
         var events = JsonConvert.DeserializeObject<List<EventResult>>(jsonResponse);
         return events.OrderBy(x => x.Event.OpenDate).ToList();
     }
 
-    public static async Task<List<EventResult>> GetEvents(string eventTypeId, int numberDaysFuture)
+    public async Task<List<EventResult>> GetEvents(string eventTypeId, int numberDaysFuture)
     {
         var filter = new MarketFilter
         {
@@ -92,7 +94,7 @@ public static class BetfairApiClient
         return await GetEvents(filter);
     }
 
-    public static async Task<MarketBook> GetMarketBook(string marketId)
+    public async Task<MarketBook> GetMarketBook(string marketId)
     {
         var parameters = new Dictionary<string, object>
         {
@@ -107,23 +109,23 @@ public static class BetfairApiClient
             [RequestConstants.LOCALE] = null,
             [RequestConstants.CURRENCY_CODE] = null
         };
-        var jsonResponse = await HttpClientHelper.GetResponse(RequestConstants.BETTING_API, "listMarketBook/", parameters);
+        var jsonResponse = await _httpClientHelper.GetResponse(RequestConstants.BETTING_API, "listMarketBook/", parameters);
         var books = JsonConvert.DeserializeObject<List<MarketBook>>(jsonResponse);
         return books[0];
     }
 
-    public static async Task<AccountStatement> GetAccountStatement(TimeRange timeRange)
+    public async Task<AccountStatement> GetAccountStatement(TimeRange timeRange)
     {
         var parameters = new Dictionary<string, object>()
         {
             [RequestConstants.ITEM_DATE_RANGE] = timeRange
         };
 
-        var jsonResponse = await HttpClientHelper.GetResponse(RequestConstants.ACCOUNTS_API, "getAccountStatement/", parameters);
+        var jsonResponse = await _httpClientHelper.GetResponse(RequestConstants.ACCOUNTS_API, "getAccountStatement/", parameters);
         return JsonConvert.DeserializeObject<AccountStatement>(jsonResponse);
     }
 
-    public static async Task<PlaceOrderResponse> PlaceOrder(string marketId, PlaceInstruction instruction)
+    public async Task<PlaceOrderResponse> PlaceOrder(string marketId, PlaceInstruction instruction)
     {
         var parameters = new Dictionary<string, object>
         {
@@ -131,7 +133,7 @@ public static class BetfairApiClient
             [RequestConstants.INSTRUCTIONS] = new List<PlaceInstruction> { instruction },
             [RequestConstants.LOCALE] = null,
         };
-        var jsonResponse = await HttpClientHelper.GetResponse(RequestConstants.BETTING_API, "placeOrders/", parameters);
+        var jsonResponse = await _httpClientHelper.GetResponse(RequestConstants.BETTING_API, "placeOrders/", parameters);
         return JsonConvert.DeserializeObject<PlaceOrderResponse>(jsonResponse);
     }
 }

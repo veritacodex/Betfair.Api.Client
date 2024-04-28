@@ -8,12 +8,19 @@ using Newtonsoft.Json;
 
 namespace Betfair.Api.Client;
 
-public static class HttpClientHelper
+public class HttpClientHelper
 {
-    private static HttpClient GetHttpClient(string baseUri)
+    private string _certFolder;
+
+    public HttpClientHelper(string certFolder)
     {
-        var config = FileHelper.GetAuthorizationConfig();
-        var loginResponse = FileHelper.GetLoginResponse();
+        _certFolder = certFolder;
+    }
+
+    private HttpClient GetHttpClient(string baseUri)
+    {
+        var config = FileHelper.GetAuthorizationConfig(_certFolder);
+        var loginResponse = FileHelper.GetLoginResponse(_certFolder);
         var httpClient = new HttpClient
         {
             BaseAddress = new Uri(baseUri)
@@ -25,7 +32,7 @@ public static class HttpClientHelper
         return httpClient;
     }
 
-    public static async Task<string> GetResponse(string apiUrl, string method, Dictionary<string, object> parameters)
+    public async Task<string> GetResponse(string apiUrl, string method, Dictionary<string, object> parameters)
     {
         var jsonDictionary = JsonConvert.SerializeObject(parameters);
         var content = new StringContent(jsonDictionary, Encoding.UTF8, HeaderConstants.ACCEPT_TYPE);

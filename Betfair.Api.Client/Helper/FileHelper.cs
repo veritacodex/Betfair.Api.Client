@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using Betfair.Api.Client.Model.Response;
 using Newtonsoft.Json;
 
@@ -8,18 +7,18 @@ namespace Betfair.Api.Client;
 
 public static class FileHelper
 {
-    public static Auth GetAuthorization()
+    public static Auth GetAuthorization(string certFolder)
     {
-        return JsonConvert.DeserializeObject<Auth>(File.ReadAllText(FileConstants.CERT_FOLDER + FileConstants.AUTH_FILE));
+        return JsonConvert.DeserializeObject<Auth>(File.ReadAllText(certFolder + FileConstants.AUTH_FILE));
     }
-    public static AuthConfig GetAuthorizationConfig()
+    public static AuthConfig GetAuthorizationConfig(string certFolder)
     {
-        var configs = JsonConvert.DeserializeObject<List<AuthConfig>>(File.ReadAllText(FileConstants.CERT_FOLDER + FileConstants.CONFIG_FILE));
+        var configs = JsonConvert.DeserializeObject<List<AuthConfig>>(File.ReadAllText(certFolder + FileConstants.CONFIG_FILE));
         return configs.Find(x => x.Version == HeaderConstants.APPLICATION_KEY_VERSION);
     }
 
-    public static Login GetLoginResponse()
+    public static Login GetLoginResponse(string certFolder)
     {
-        return JsonConvert.DeserializeObject<Login>(File.ReadAllText(FileConstants.CERT_FOLDER + FileConstants.SESSION_TOKEN_FILE));
+        return JsonConvert.DeserializeObject<Login>(File.ReadAllText(certFolder + FileConstants.SESSION_TOKEN_FILE));
     }
 }

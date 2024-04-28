@@ -2,7 +2,6 @@
 
 public static class FileConstants
 {
-    public const string CERT_FOLDER = "./BetfairCert/";
     public const string SESSION_TOKEN_FILE = "sessionToken.json";
     public const string CONFIG_FILE = "config.json";
     public const string CERTIFICATE_FILE = "client-2048.p12";

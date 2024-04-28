@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Betfair.Api.Client", "Betfair.Api.Client\Betfair.Api.Client.csproj", "{E5E522AA-5F97-4FBC-BDCD-BFA3679A424C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Betfair.Api.Client.Examples", "Betfair.Api.Client.Examples\Betfair.Api.Client.Examples.csproj", "{A2719BC2-EECF-41E9-BD02-8B11E62C79D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{E5E522AA-5F97-4FBC-BDCD-BFA3679A424C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5E522AA-5F97-4FBC-BDCD-BFA3679A424C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5E522AA-5F97-4FBC-BDCD-BFA3679A424C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2719BC2-EECF-41E9-BD02-8B11E62C79D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2719BC2-EECF-41E9-BD02-8B11E62C79D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2719BC2-EECF-41E9-BD02-8B11E62C79D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2719BC2-EECF-41E9-BD02-8B11E62C79D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
