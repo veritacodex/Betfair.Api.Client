@@ -4,4 +4,15 @@
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Helper/" />
+    <Folder Include="Model/" />
+    <Folder Include="Model/Request/" />
+    <Folder Include="Model/Response/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
 </Project>

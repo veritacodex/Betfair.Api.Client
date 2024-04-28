@@ -1,0 +1,50 @@
+namespace Betfair.Api.Client;
+
+public class RequestConstants
+{
+    public const string BETTING_API = "https://api.betfair.com/exchange/betting/rest/v1.0/";
+    public const string ACCOUNTS_API = "https://api.betfair.com/exchange/account/rest/v1.0/";
+    public const string CERT_ENDPOINT = "https://identitysso-cert.betfair.es"; 
+    public const string LIST_EVENT_TYPES_METHOD = "listEventTypes";
+    public const string LIST_MARKET_CATALOGUE_METHOD = "listMarketCatalogue";
+    public const string LIST_MARKET_TYPES_METHOD = "listMarketTypes";
+    public const string LIST_MARKET_BOOK_METHOD = "listMarketBook";
+    public const string PLACE_ORDERS_METHOD = "placeOrders";
+    public const string LIST_MARKET_PROFIT_AND_LOST_METHOD = "listMarketProfitAndLoss";
+    public const string LIST_CURRENT_ORDERS_METHOD = "listCurrentOrders";
+    public const string LIST_CLEARED_ORDERS_METHOD = "listClearedOrders";
+    public const string CANCEL_ORDERS_METHOD = "cancelOrders";
+    public const string REPLACE_ORDERS_METHOD = "replaceOrders";
+    public const string UPDATE_ORDERS_METHOD = "updateOrders";
+    public const string FILTER = "filter";
+    public const string LOCALE = "locale";
+    public const string CURRENCY_CODE = "currencyCode";
+    public const string MARKET_PROJECTION = "marketProjection";
+    public const string MATCH_PROJECTION = "matchProjection";
+    public const string ORDER_PROJECTION = "orderProjection";
+    public const string PRICE_PROJECTION = "priceProjection";
+    public const string SORT = "sort";
+    public const string MAX_RESULTS = "maxResults";
+    public const string MARKET_IDS = "marketIds";
+    public const string MARKET_ID = "marketId";
+    public const string INSTRUCTIONS = "instructions";
+    public const string CUSTOMER_REFERENCE = "customerRef";
+    public const string INCLUDE_SETTLED_BETS = "includeSettledBets";
+    public const string INCLUDE_BSP_BETS = "includeBspBets";
+    public const string NET_OF_COMMISSION = "netOfCommission";
+    public const string BET_IDS = "betIds";
+    public const string PLACED_DATE_RANGE = "placedDateRange";
+    public const string ORDER_BY = "orderBy";
+    public const string SORT_DIR = "sortDir";
+    public const string FROM_RECORD = "fromRecord";
+    public const string RECORD_COUNT = "recordCount";
+    public const string BET_STATUS = "betStatus";
+    public const string EVENT_TYPE_IDS = "eventTypeIds";
+    public const string EVENT_IDS = "eventIds";
+    public const string RUNNER_IDS = "runnerIds";
+    public const string SIDE = "side";
+    public const string SETTLED_DATE_RANGE = "settledDateRange";
+    public const string GROUP_BY = "groupBy";
+    public const string INCLUDE_ITEM_DESCRIPTION = "includeItemDescription";
+    public const string ITEM_DATE_RANGE = "itemDateRange";
+}
