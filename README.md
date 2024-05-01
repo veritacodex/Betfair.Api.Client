@@ -1,1 +1,1 @@
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=veritacodex_Betfair.Api.Client&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=veritacodex_Betfair.Api.Client)
+Sonar Cloud Status [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=veritacodex_Betfair.Api.Client&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=veritacodex_Betfair.Api.Client)
