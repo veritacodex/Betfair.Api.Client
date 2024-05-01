@@ -12,7 +12,7 @@ namespace Betfair.Api.Client.Examples
             var events = await client.GetEvents(EventTypeIds.FootballEventId, 1);
             foreach (var item in events)
             {
-                Console.WriteLine(item.Event.Venue);
+                Console.WriteLine($"Venue: {item.Event.Venue}");
             }
         }
     }
